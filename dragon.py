@@ -16,14 +16,14 @@ def chooseCave():
 
     return cave 
 
-def checkCave(choosenCave):
+def checkCave(chosenCave):
     print ('You approach the cave...')
     time.sleep(2) # sleep pauses the program for 2 seconds
     print('A large dragon jumps out in front of you! He opens his jaws and...')
     print()
     time.sleep(2)
 
-    friendlyCave = random.rand(Int(1,2))
+    friendlyCave = random.randint(1,2)
 
     if chosenCave == str(friendlyCave):
         print('Gives you his treasure!')
@@ -38,4 +38,4 @@ while playAgain == 'yes' or playAgain == 'y':
     checkCave(caveNumber)
 
     print('Do you want to play again? (yes or no)')
-    playAgain =input()
+    playAgain =input() 
