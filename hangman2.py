@@ -34,6 +34,16 @@ HANGMAN_PICS = ['''
     0   |
    /|\  |
    / \  |
+       ===''' , '''
+    +---+
+   [0   |
+   /|\  |
+   / \  |
+       ===''' , '''
+    +---+
+   [0]  |
+   /|\  |
+   / \  |
        ===''']
 words = {'Colours':'red orange yellow green blue indigo violet white black brown'.split(),
     'Shapes':'square triangle rectangle circle ellipse rhombus trapezoid chevron pentagon hexagon septagon octagon'.split(),
@@ -43,9 +53,12 @@ words = {'Colours':'red orange yellow green blue indigo violet white black brown
 def getRandomWord(wordDict):
     # This function returns a random string from the passed dictionary of lists of strings and its key.
     # First, randomly select a key from the dictionary:
+    wordKey = random.choice(list(wordDict.keys()))
+
+    # Second, randomly select a word from the key's list in the dictionary:
+    wordIndex = random.randint(0,len(wordDict[wordKey]) -1) # Arrays start at 0
     
-    wordIndex = random.randint(0,len(wordList) -1) # Arrays start at 0
-    return wordList[wordIndex] # the value in the brackets is the position number
+    return [wordDict[wordKey][wordIndex], wordKey] # the value in the brackets is the position number
 
 def displayBoard(missedLetters, correctLetters, secretWord):
     print(HANGMAN_PICS[len(missedLetters)])
@@ -88,12 +101,27 @@ def playAgain():
 
 
 print ('H A N G M A N')
+
+difficulty = 'X'
+while difficulty not in 'EMH':
+    print('Enter difficulty: E - Easy, M - Medium, H - Hard')
+    difficulty = input().upper()
+if difficulty == 'M':
+    del HANGMAN_PICS[8]
+    del HANGMAN_PICS[7]
+if difficulty == 'H':
+    del HANGMAN_PICS[8]
+    del HANGMAN_PICS[7]
+    del HANGMAN_PICS[5]
+    del HANGMAN_PICS[3] 
+
 missedLetters = ''
 correctLetters = ''
-secretWord = getRandomWord(words)
+secretWord, secretSet = getRandomWord(words)
 gameIsDone = False
 
 while True:
+    print('The secret word is in the set: ' + secretSet)
     displayBoard(missedLetters, correctLetters, secretWord)
 
     # Let the player enter a letter.
@@ -108,7 +136,7 @@ while True:
             if secretWord[i] not in correctLetters:
                 foundAllLetters = False
                 break
-            if foundAllLetters:
+        if foundAllLetters:
                 print('Yes! The secret word is "' + secretWord + '"! You have won!')
                 gameIsDone = True
     else:
@@ -116,17 +144,18 @@ while True:
 
         # Check if player has guessed too many times and lost.
         if len(missedLetters) == len(HANGMAN_PICS) - 1:
-                displayboard(missedLetters, correctLetters, secretWord)
-                print('You have run out of guesses!\nAfter ' + str(len(missedLetters)) + 'missed guesses and ' + str(len(correctLetters)) + 'correct guesses, the word was "' + secretWord + '"')
+                displayBoard(missedLetters, correctLetters, secretWord)
+                print('You have run out of guesses!\nAfter ' + str(len(missedLetters)) + ' missed guesses and ' + str(len(correctLetters)) + ' correct guesses, the word was "' + secretWord + '"')
                 gameIsDone = True
 
         # Ask the player if they want to play again (but only if the game is done).
-        if gameIsDone:
-                if playAgain():
-                    missedLetters = ''
-                    correctLetters = ''
-                    gameIsDone = False
-                    secretWord = getRandomWord(words)
-                else:
-                    break
+    if gameIsDone:
+        if playAgain():
+            missedLetters = ''
+            correctLetters = ''
+
+            gameIsDone = False
+            secretWord, secretSet = getRandomWord(words)
+        else:
+            break
 # The spacing within the code matters
