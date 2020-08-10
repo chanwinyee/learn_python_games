@@ -124,7 +124,7 @@ def isBoardFull(board):
         return True 
 
 
-print('Welcome to Tic-Tact-Toe!')
+print('Welcome to Tic-Tac-Toe!')
 
 while True:
     # Reset the board.

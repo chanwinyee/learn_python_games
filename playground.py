@@ -80,14 +80,28 @@
 # del animals[1]
 # print(animals)
 
-spam, eggs, ham = ['apples','cats',42]
-print(spam )
-print(eggs)
-print(ham)
+# spam, eggs, ham = ['apples','cats',42]
+# print(spam )
+# print(eggs)
+# print(ham)
 
 # this is the same logic as if I wrote out the following long form logic
 # spam = ['apples','cats',42][0]
 # eggs = ['apples','cats',42][1]
 # ham = ['apples','cats',42][2]
 # If the short hand is used, then there must be the same number of variables as list items
+
+def ReturnsTrue():
+    print('ReturnsTrue() was called.')
+    return True 
+
+def ReturnsFalse():
+    print('ReturnsFalse() was called.')
+    return False 
+
+# ReturnsTrue() 
+# ReturnsFalse() 
+# ReturnsFalse() or ReturnsTrue() 
+# ReturnsTrue() and ReturnsFalse() 
+ReturnsFalse() and ReturnsTrue() 
 
