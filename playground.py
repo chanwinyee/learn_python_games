@@ -91,17 +91,49 @@
 # ham = ['apples','cats',42][2]
 # If the short hand is used, then there must be the same number of variables as list items
 
-def ReturnsTrue():
-    print('ReturnsTrue() was called.')
-    return True 
+# def ReturnsTrue():
+#     print('ReturnsTrue() was called.')
+#     return True 
 
-def ReturnsFalse():
-    print('ReturnsFalse() was called.')
-    return False 
+# def ReturnsFalse():
+#     print('ReturnsFalse() was called.')
+#     return False 
 
 # ReturnsTrue() 
 # ReturnsFalse() 
 # ReturnsFalse() or ReturnsTrue() 
 # ReturnsTrue() and ReturnsFalse() 
-ReturnsFalse() and ReturnsTrue() 
+# ReturnsFalse() and ReturnsTrue() 
+
+# import random 
+# spam = list(range(10))
+# print(spam)
+
+# random.shuffle(spam)
+# print(spam)
+
+# random.shuffle(spam)
+# print(spam)
+
+# test = spam.copy() 
+# print(test) 
+
+# random.shuffle(test) 
+# print(test)
+# print(spam) 
+
+
+# AUGMENTED ASSIGNMENT OPERATOR
+spam = 42
+spam = spam + 10 # same as spam += 10
+print(spam )
+
+spam = 42
+spam -= 2 
+print(spam )
+
+eggs = 'Hello '
+eggs = eggs + 'world!' # same as eggs += 'world!'
+print(eggs )
+
 
